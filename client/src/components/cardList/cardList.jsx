@@ -1,13 +1,14 @@
 import { useSelector } from "react-redux"
 import React from "react"
 import Card from "../card/card"
+import styles from './cardList.module.css'
 
 const CardList = () => {
     
     const country = useSelector(state => state.countries)
 
     return (
-        <div>
+        <div className={styles.cardList}>
             {country.map(country => {
             return <Card
             key={country.id ? country.id : 'error'}

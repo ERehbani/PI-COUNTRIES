@@ -1,14 +1,15 @@
 import './App.css';
-import Detail from './views/detail/detail';
-import Home from './views/home/home';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { Detail, Home } from './views';
 
 
 function App() {
   return (
     <div className="App">
-      <Route path="/home" component={Home}/>
-      <Route path={`/home/:id`} component={Detail}/>
+      <Switch>
+        <Route exact path="/home" component={Home}/>
+        <Route exact path="/detail/:id" component={Detail} />
+      </Switch>
     </div>
   );
 }
