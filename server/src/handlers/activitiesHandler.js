@@ -10,9 +10,9 @@ const getActivityHandler = async (req,res) => {
 }
 
 const activityHandler = async (req, res) => {
-    const { name, difficulty, duration, season, CountryId } = req.body;
+    const { name, difficulty, duration, season, countryId } = req.body;
     try {
-        const response = await createActivityInDb(name, difficulty, duration, season, CountryId)
+        const response = await createActivityInDb(name, difficulty, duration, season, countryId)
         res.status(200).json(response)
     } catch (error) {
         res.status(400).json({ error: error.message })

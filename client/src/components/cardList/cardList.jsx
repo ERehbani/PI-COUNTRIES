@@ -5,7 +5,9 @@ import styles from './cardList.module.css'
 
 const CardList = () => {
     
-    const country = useSelector(state => state.countries)
+    const country = useSelector(state => state.countriesCurrentPage)
+    // const filter = useSelector(state => state.countries)
+
 
     return (
         <div className={styles.cardList}>

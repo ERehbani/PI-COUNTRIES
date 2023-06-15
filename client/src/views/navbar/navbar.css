@@ -1,0 +1,22 @@
+/* .navbar-container {
+    margin: 0 37%;
+    display: flex;
+} */
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 0 0 15px 15px;
+    height: 30px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.navlink {
+    text-decoration: none;
+}
+
+.navbar-h1 {
+    padding: 0 50px;
+}

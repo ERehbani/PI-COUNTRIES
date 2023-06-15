@@ -1,23 +1,45 @@
 // import Card from "../../components/card/card"
-import Navbar from "../../components/navbar/navbar"
+
 import CardList from '../../components/cardList/cardList'
-import { useEffect } from "react"
-import {getCountry} from '../../redux/actions'
-import { useDispatch } from "react-redux"
+import { useEffect, useState } from "react"
+import {getCountry, getCountryByName } from '../../redux/actions'
+import { useDispatch, useSelector } from "react-redux"
+import Searchbar from "../Searchbar/searchbar"
+import Paginado from "../Paginado/paginado"
+import Filter from "../Filters/filters"
+import Order from "../Order/order"
+import Navbar from '../navbar/navbar'
+
 
 const Home = () => {
 
     const dispatch = useDispatch()
+    const allCountries = useSelector((state) => state.countries)
+    const[searchString, setSearchString] = useState("")
+
+
+    const handleChange = (event) => {
+        setSearchString(event.target.value.toLowerCase())
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        dispatch(getCountryByName(searchString))
+    }
 
 useEffect(() => {
-    dispatch(getCountry())
-},[dispatch])
+    if(!allCountries.length){
+        dispatch(getCountry())
+    }
+},[dispatch, allCountries])
 
     return (
         <div>
             <h1>HOME</h1>
-            <Navbar/>
-            <CardList/>
+            <Searchbar  handleChange={handleChange} handleSubmit={handleSubmit}/>
+            <Filter/>   <Order/>
+            <CardList allCountries={allCountries}/>
+            <Paginado/>
         </div>
     )
 }

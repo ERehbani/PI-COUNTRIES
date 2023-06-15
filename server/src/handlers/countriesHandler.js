@@ -1,4 +1,4 @@
-const { getApiInfo, getCountriesByName, getCountriesById } = require("../controllers/countryController")
+const { getApiInfo, getCountriesByName, getCountriesById, getCountryDb } = require("../controllers/countryController")
 
 
 
@@ -6,10 +6,10 @@ const getCountryHandler = async(req, res) => {
     const { name } = req.query
     try {
         if(name) {
-            const response = await getCountriesByName(name)
+            const response = await getCountryDb(name)
             return res.status(200).json(response)
         }
-        const response = await getCountriesByName()
+        const response = await getCountryDb()
         return res.status(200).json(response)
     } catch (error) {
         res.status(400).json({ error: error.message })
@@ -30,11 +30,6 @@ const getIdHandler = async(req, res) => {
         res.status(400).json({ error: error.message })
     }
 }
-
-
-
-
-
 
 module.exports = {
     getCountryHandler,

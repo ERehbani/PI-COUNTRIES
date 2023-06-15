@@ -9,6 +9,10 @@ server.use(morgan("dev"));
 server.use(express.json());
 server.use(cors());
 
+
+// const { uploadDB }  = require("./controllers/uploadDB")
+// uploadDB()
+
 server.use(router);
 
 module.exports = server;

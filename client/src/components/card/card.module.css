@@ -1,16 +1,17 @@
 .card {
-    border-radius: 60px;
-background: linear-gradient(315deg, #ffffff, #ffffff);
-box-shadow: 15px 15px 30px #cccccc,
-        -15px -15px 30px #ffffff;
+    border-radius: 16px;
+    background: linear-gradient(315deg, #ffffff, #ffffff);
+    box-shadow: 15px 15px 30px #86a8b3, -15px -15px 30px #86a8b3;
     display: inline-block;
     margin: 15px;
+    border: 1px solid black;
 }
 
 .card img {
     object-fit: contain;
     padding: 20px 0 0 0;
     mix-blend-mode:darken;
+    margin-bottom: 16px;
 }
 
 .cardContainer {
@@ -19,8 +20,13 @@ box-shadow: 15px 15px 30px #cccccc,
     padding-right: 5px;
 }
 
-p {
+.name {
+    font-weight: bold;
+}
+
+.id p {
     margin: 0;
+    font-style:italic;
 }
 
 .continent {
