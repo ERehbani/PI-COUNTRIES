@@ -155,7 +155,7 @@ export const getActivity = () => {
         type: GET_ACTIVITY,
       });
     } catch (error) {
-      alert(error.message);
+      // alert(error.message);
     }
   };
 };

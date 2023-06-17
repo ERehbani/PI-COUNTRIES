@@ -1,3 +1,14 @@
 .detailContainer img {
-    width: 350px;
+    width: 400px;
+}
+
+.detailContainer {
+
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    
 }

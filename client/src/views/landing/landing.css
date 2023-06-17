@@ -21,3 +21,26 @@
     transform: translate(0);
     box-shadow: none;
 }
+
+.landing {
+        height: 94vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+}
+
+.author {
+    /* display: -webkit-box; */
+    margin: 0 20px;
+    background-color: #fff;
+    width: max-content;
+    height: 40px;
+    font-size: 25px;
+background: #ececec;
+    box-shadow: inset -25px 25px 50px #c9c9c9,
+        inset 25px -25px 50px #ffffff;
+        border-radius: 0 50px 0 0;
+}

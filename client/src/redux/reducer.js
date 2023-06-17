@@ -22,7 +22,6 @@ const initialState = {
   countriesCurrentPage: [],
   activities: [],
 };
-console.log(initialState);
 
 const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -122,7 +121,6 @@ const rootReducer = (state = initialState, { type, payload }) => {
       };
 
     case GET_ACTIVITY:
-      console.log(state.activities);
       return {
         ...state,
         activities: payload,
@@ -135,14 +133,24 @@ const rootReducer = (state = initialState, { type, payload }) => {
           countries: state.countries,
         };
       }
-      const activityCountries = state.countries.filter((country) =>
-        country.Activities.some((activity) => activity.name === payload)
-      );
-      console.log(state.countries[0].Activities);
 
+      const filterCountry = state.countries.filter((country) => {
+        const activities = country.Activities;
+        if (activities && activities.length > 0) {
+          return activities.some((activity) => activity.name !== "");
+        }
+        return false;
+      });
+
+      const countriesWithActivities = filterCountry.map((country) => ({
+        ...country,
+        Activities: country.Activities.filter(
+          (activity) => activity.name !== ""
+        ),
+      }));
       return {
         ...state,
-        countries: activityCountries,
+        countries: countriesWithActivities,
       };
 
     default:

@@ -46,7 +46,7 @@ const Paginado = () => {
           PREV
         </button>
         <p className={styles.pagina}>
-          {currentPage}/{Math.floor(totCountries / countriesPerPage)}
+          {currentPage}/{Math.floor(totCountries / countriesPerPage) + 1}
         </p>
         <button
           onClick={() => nextHandler(currentPage)}

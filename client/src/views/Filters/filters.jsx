@@ -11,7 +11,6 @@ export const Filter = () => {
   const dispatch = useDispatch();
   const activities = useSelector((state) => state.activities);
   const countryContinent = useSelector((state) => state.allCountries);
-
   // const [filter, setFilter] = useState("");
   // const [activitySelected, setActivitySelected] = useState(false);
   console.log(countryContinent);
@@ -58,7 +57,7 @@ export const Filter = () => {
       <select onChange={handleActivity}>
         <option value="All">Todos los países</option>
         <option>Filtrar por actividad</option>
-        {activities.map((activity, index) => (
+        {activities?.map((activity, index) => (
           <option value={activity.name} key={index}>
             {activity.name}
           </option>

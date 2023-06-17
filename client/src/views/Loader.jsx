@@ -1,19 +1,21 @@
-import styles from "./Loader.module.css";
+import "./Loader.css";
 
 const Loader = () => {
   return (
-    <div>
-      <h1>Loading...</h1>
-      <div className={styles.loader}>
-        <div className={styles.cube}>
-          <div className={styles.face1}></div>
-          <div className={styles.face2}></div>
-          <div className={styles.face3}></div>
-          <div className={styles.face4}></div>
-          <div className={styles.face5}></div>
-          <div className={styles.face6}></div>
-        </div>
-      </div>
+    <div class="loaderContainer">
+      <svg class="svg">
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="12"></feGaussianBlur>
+          <feColorMatrix
+            values="0 0 0 0 0 
+            0 0 0 0 0 
+            0 0 0 0 0 
+            0 0 0 48 -7"
+          ></feColorMatrix>
+        </filter>
+      </svg>
+
+      <div class="loader"></div>
     </div>
   );
 };
