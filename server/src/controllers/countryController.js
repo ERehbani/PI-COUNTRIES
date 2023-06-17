@@ -3,12 +3,12 @@ const {Country, Activity} = require("../db")
 const URL = "https://rest-countries.up.railway.app/v3/all"
 
 
-const getApiInfo = async(name) => {
+const getApiInfo = async() => {
     const { data } = await axios(`${URL}`)
     const countriesApiInfo = await data.map((country) => {
         return {
             id: country.cca3,
-            name: country.name.common,
+            name: country.translations.spa.common,
             image: country.flags[1],
             continent: country.region,
             capital: country.capital ? country.capital[0] : "capital not found",
@@ -54,20 +54,23 @@ const getCountryDb = async () => {
     return allCountries;
 }
 
-const getCountriesByName = async(name) => {
-    const allCountries = await getCountryDb()
-    if(name) {
-        let countryFilter = allCountries.filter(country =>
-            country.name.toLowerCase().includes(name.toLowerCase()))
-        if(countryFilter.length){
-            return countryFilter
-        }   
-        throw new Error("No se encontro usuario con ese nombre")
+const getCountriesByName = async (name) => {
+  const allCountries = await getCountryDb();
+
+  if (name) {
+    const countryFilter = allCountries.filter((country) =>
+      country.name.toLowerCase().includes(name.toLowerCase())
+    );
+
+    if (countryFilter.length) {
+      return countryFilter;
+    } else {
+      throw new Error("No se encontró país con ese nombre");
     }
-        else {
-            return allCountries
-        }
-    }
+  } else {
+    return allCountries;
+  }
+};
 
 
 const getCountriesById = async(id) => {

@@ -1,102 +1,153 @@
-import { GET_COUNTRY_BY_NAME, GET_COUNTRY, COUNTRY_DETAIL, CLEAN_DETAIL, FILTER_COUNTRY, COUNTRYS_CURRENT_PAGE, SET_PAGE, ORDER_COUNTRY_POB, ORDER_COUNTRY_AZ, UPDATE_FILTERED_COUNTRIES } from "./action-type";
+import {
+  GET_COUNTRY_BY_NAME,
+  GET_COUNTRY,
+  COUNTRY_DETAIL,
+  CLEAN_DETAIL,
+  FILTER_COUNTRY,
+  COUNTRYS_CURRENT_PAGE,
+  SET_PAGE,
+  ORDER_COUNTRY_POB,
+  ORDER_COUNTRY_AZ,
+  UPDATE_FILTERED_COUNTRIES,
+  POST_ACTIVITY,
+  GET_ACTIVITY,
+  FILTER_ACTIVITY,
+} from "./action-type";
 
 const initialState = {
-    countries: [],
-    allCountries: [],
-    detail: {},
-    page: 1,
-    countriesCurrentPage: []
-}
+  countries: [],
+  allCountries: [],
+  detail: {},
+  page: 1,
+  countriesCurrentPage: [],
+  activities: [],
+};
+console.log(initialState);
 
-const rootReducer = (state = initialState, {type, payload}) => {
-    switch (type) {
-        
-        case GET_COUNTRY:
-            return {
-                ...state,
-                countries: payload,
-                allCountries: payload
-            }
-        
-            case COUNTRY_DETAIL:
-            return {
-                ...state,
-                detail: payload
-            }
-        
-            case CLEAN_DETAIL:
-            return {
-                ...state,
-                detail:{}
-            }
-            
-            case FILTER_COUNTRY: 
-            if(payload === 'All') return{
-                ...state,
-                countries: state.allCountries
-            }
-            const countriesFilter = state.allCountries
-            const filteredCountries = countriesFilter.filter((country) => country.continent === payload)
-            return {
-                ...state,
-                countries: filteredCountries
-            }
-        
-            case GET_COUNTRY_BY_NAME:
-            return {
-                ...state,
-                countries: payload
-            }
-        
-            case SET_PAGE:{
-            return {
-                ...state,
-                page: payload
-            }
-        }
-        
-        case COUNTRYS_CURRENT_PAGE: {
-            return {
-                ...state,
-                countriesCurrentPage: payload,
-            }
-        }
+const rootReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
+    case GET_COUNTRY:
+      return {
+        ...state,
+        countries: payload,
+        allCountries: payload,
+      };
 
-        case UPDATE_FILTERED_COUNTRIES:
-            return {
-                ...state,
-                countries: payload,
-            };
+    case COUNTRY_DETAIL:
+      return {
+        ...state,
+        detail: payload,
+      };
 
-        case ORDER_COUNTRY_AZ :
-            return {
-                ...state,
-                countries: payload === "A - Z"
-                ? [...state.countries].sort((a, b) => a.name.localeCompare(b.name))
-                : [...state.countries].sort((a, b) => b.name.localeCompare(a.name))
-            }
+    case CLEAN_DETAIL:
+      return {
+        ...state,
+        detail: {},
+      };
 
-        case ORDER_COUNTRY_POB:
-            return {
-                ...state,
-                countries: payload === "Menor"
-                ? [...state.countries].sort((a, b) => a.poblation - b.poblation)
-                : [...state.countries].sort((a, b) => b.poblation - a.poblation)
-            }
+    case FILTER_COUNTRY:
+      if (payload === "All")
+        return {
+          ...state,
+          countries: state.allCountries,
+        };
+      const countriesFilter = state.allCountries;
+      const filteredCountries = countriesFilter.filter(
+        (country) => country.continent === payload
+      );
+      return {
+        ...state,
+        countries: filteredCountries,
+      };
 
+    case GET_COUNTRY_BY_NAME:
+      return {
+        ...state,
+        countries: payload,
+      };
 
-
-
-
-
-        default:
-            return{...state}
+    case SET_PAGE: {
+      return {
+        ...state,
+        page: payload,
+      };
     }
-}
 
+    case COUNTRYS_CURRENT_PAGE: {
+      return {
+        ...state,
+        countriesCurrentPage: payload,
+      };
+    }
 
+    case UPDATE_FILTERED_COUNTRIES:
+      return {
+        ...state,
+        countries: payload,
+      };
 
+    case ORDER_COUNTRY_AZ:
+      let sortedCountries;
 
+      if (payload === "A - Z") {
+        sortedCountries = [...state.countries].sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+      } else if (payload === "Z - A") {
+        sortedCountries = [...state.countries].sort((a, b) =>
+          b.name.localeCompare(a.name)
+        );
+      } else {
+        sortedCountries = [...state.countries];
+      }
 
+      return {
+        ...state,
+        countries: sortedCountries,
+      };
 
-export default rootReducer
+    case ORDER_COUNTRY_POB:
+      return {
+        ...state,
+        countries:
+          payload === "Menor"
+            ? [...state.countries].sort((a, b) => a.poblation - b.poblation)
+            : [...state.countries].sort((a, b) => b.poblation - a.poblation),
+      };
+
+    case POST_ACTIVITY:
+      return {
+        ...state,
+        activities: payload,
+      };
+
+    case GET_ACTIVITY:
+      console.log(state.activities);
+      return {
+        ...state,
+        activities: payload,
+      };
+
+    case FILTER_ACTIVITY:
+      if (payload === "All") {
+        return {
+          ...state,
+          countries: state.countries,
+        };
+      }
+      const activityCountries = state.countries.filter((country) =>
+        country.Activities.some((activity) => activity.name === payload)
+      );
+      console.log(state.countries[0].Activities);
+
+      return {
+        ...state,
+        countries: activityCountries,
+      };
+
+    default:
+      return { ...state };
+  }
+};
+
+export default rootReducer;
