@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getActivity, postActivity } from "../../redux/actions";
 import validate from "./validate";
+import './create.css'
 
 const Create = () => {
   const dispatch = useDispatch();
@@ -120,7 +121,7 @@ const Create = () => {
   return (
     <div>
       <form className="form-container" onSubmit={handleOnSubmit}>
-        <h1>Create tourist activity</h1>
+        <h1>Crear una actividad turística</h1>
 
         <div className="form-row">
           <div className="form-column">
@@ -209,10 +210,11 @@ const Create = () => {
           ))}
         </div>
 
-        <button className="btn-submit" type="submit">
+        <button className="button" type="submit">
           Enviar
         </button>
       </form>
+      
     </div>
   );
 };

@@ -1,20 +1,27 @@
+.cardContainer {
+    padding: 20px;
+}
+
 .card {
     border-radius: 16px;
     background: linear-gradient(315deg, #ffffff, #ffffff);
     box-shadow: 34px 11px 12px 0px rgba(0, 0, 0, 0.1);
     display: inline-block;
     margin: 15px;
-    /* border: 1px solid black; */
+    border: 1px solid black;
 }
 
 .card img {
     object-fit: contain;
     padding: 20px 0 0 0;
-    mix-blend-mode:darken;
+    left: 11.51%;
+    right: 11.03%;
+    top: 20.36%;
+    bottom: 36.09%;
     margin-bottom: 16px;
 }
 
-.cardContainer {
+.card1 {
     display: flex;
     justify-content: space-around;
     padding-right: 5px;
@@ -22,34 +29,47 @@
 
 .name {
     font-weight: bold;
+    font-size: 18px;
 }
 
 .id p {
     margin: 0;
-    font-style:italic;
+    background: #EEEEEE;
+    color: #787878;
+border-radius: 8px;
+width: 50px;
 }
 
 .continent {
     display: flex;
-    margin: 10px;
-    padding: 10px 0 0 20px;
+    justify-content: start;
+    align-items: start;
+    text-align: start;
+    margin-left: 30px;
 }
 
-.continent p {
-    margin: 10px 50px;
-}
 
 .navLink {
     text-decoration: none;
 }
 
-button {
+.buttonToDetail {
+    background: #4B5563;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    height: 40px;
+    width: 100%;
+    color: white;
+    border: none;
+}
+
+/* button {
     position: relative;
     display: inline-block;
     margin: 15px;
     padding: 5px;
     text-align: center;
-    font-size: 15px;
+    font-size: 11px;
     letter-spacing: 1px;
     text-decoration: none;
     color: black;
@@ -69,4 +89,74 @@ button {
   
   button:active {
     transform: scale(0.9);
-  }
+  } */
+
+.America {
+    color: #F97316;
+    background-color: #FDE68A;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.Europe {
+    color: #F43F5E;
+    background-color: #FECDD3;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.Asia {
+    color: #ED509E;
+    background-color: #FBCFE8;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.Africa {
+    color: #84CC16;
+    background-color: #D9F99D;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.Antarctic {
+    color: white;
+    background-color: #78AED3;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+}

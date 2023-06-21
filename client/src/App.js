@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Switch, useLocation } from 'react-router-dom';
+import { Route,  Routes,  useLocation } from 'react-router-dom';
 import { Create, Detail, Home, Landing } from './views';
 import Navbar from './views/navbar/navbar';
 
@@ -11,12 +11,12 @@ function App() {
     <div className="App">
       
         {location.pathname !== "/" && <Navbar/>}
-      <Switch>
-        <Route exact path="/" component={Landing}/>
-        <Route exact path="/home" component={Home}/>
-        <Route exact path="/create" component={Create}/>
-        <Route exact path="/detail/:id" component={Detail} />
-      </Switch>
+      <Routes>
+        <Route exact path="/" element={<Landing/>}/>
+        <Route exact path="/home" element={<Home/>}/>
+        <Route exact path="/create" element={<Create/>}/>
+        <Route exact path="/detail/:id" element={<Detail/>} />
+      </Routes>
     </div>
   );
 }

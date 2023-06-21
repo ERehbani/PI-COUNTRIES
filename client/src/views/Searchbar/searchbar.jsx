@@ -1,22 +1,23 @@
-import styles from "./searchbar.module.css";
+import "../index.css";
 
 const Searchbar = ({ handleSubmit, handleChange }) => {
   return (
-    <div>
-      <div className={styles.inputContainer}>
+    <div className="filerOrderContainer">
+      <div className="inputContainer">
+        <h1 className="titleBar">Búsqueda</h1>
         <input
-          className={styles.input}
+          className="inputSearch"
           onChange={handleChange}
           placeholder="Nombre"
           type="text"
         />
 
-        <span className={styles.icon}>
-          <button onClick={handleSubmit}>Buscar</button>
-        </span>
-        <div className={styles.topline}></div>
-        <div className={styles.underline}></div>
+        <div className="topline"></div>
+        <div className="underline"></div>
       </div>
+        <span className="icon">
+          <button className="buttonSubmit" onClick={handleSubmit}>Buscar🔍</button>
+        </span>
     </div>
   );
 };

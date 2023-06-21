@@ -1,16 +1,25 @@
 import { NavLink } from "react-router-dom";
-import "./landing.css";
+import styles from './landing.module.css'
 
 const Landing = () => {
   return (
-    <div class="lading-container">
+    <div className={styles.landingContainer}>
       <div class="landing">
-        <h1 class="title">PI COUNTRIES 🌎</h1>
-        <NavLink to="/home">
-          <button class="button">Países</button>
-        </NavLink>
+        <img className={styles.landingImg} src="logo.svg" alt="" />
+          <div>
+          <NavLink to="/home" ><button className={styles.active}>Ingresar al sitio</button></NavLink>
+          </div>
       </div>
-      <p class="author">by Elian Rehbani ✓</p>
+      
+      <div className={styles.footerContainer}>
+        <footer>Creado por <span>
+              <img src="github.svg" className={styles.githubLogo} alt="" />
+            </span>
+          <b> Elián Rehbani </b>para <b>Henry </b>
+            <span>
+              <img src="henry.png" alt="" className={styles.henryLogo}/>
+            </span></footer>
+      </div>
     </div>
   );
 };

@@ -7,16 +7,49 @@
     flex-direction: row;
     justify-content: space-around;
     background-color: #fff;
-    padding: 5px;
+    padding: 15px;
+    width: 100%;
+    height: 60px;
     border-radius: 0 0 15px 15px;
-    height: 30px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .navlink {
     text-decoration: none;
+    margin-left: 48px;
+    color: black;
 }
 
-.navbar-h1 {
-    padding: 0 50px;
+.navlink:nth-child(2) {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.navbarLogo {
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+}
+
+.navbarLogo {
+    width: 300px;
+    height: 50px;
+}
+
+.navbarConatiner {
+    display: flex;
+}
+
+.buttonToForm {
+    text-decoration: none;
+    width: 219px;
+    height: 54px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
 }

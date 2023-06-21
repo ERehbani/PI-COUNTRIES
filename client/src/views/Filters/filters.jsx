@@ -6,6 +6,7 @@ import {
   updateFilteredCountries,
 } from "../../redux/actions";
 // import { useState } from "react";
+import '../index.css'
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -43,9 +44,10 @@ export const Filter = () => {
   };
 
   return (
-    <div>
-      <b>Filtro </b>
-      <select name="continent" id="" defaultValue="" onChange={handleFilter}>
+    <div className="filterOrderContainer">
+     <div className="filtroContinente">
+     <h1 className="titleBar">Filtro</h1>
+      <select className="orderSelect" name="continent" id="" defaultValue="" onChange={handleFilter}>
         <option value="continent">Continentes</option>
         {filtro.map((cont, index) => (
           <option value={cont} key={index}>
@@ -53,8 +55,11 @@ export const Filter = () => {
           </option>
         ))}
       </select>
+     </div>
 
-      <select onChange={handleActivity}>
+     <div className="filtroActividad">
+      <h1 className="titleBar">Actividad</h1>
+     <select className="orderSelect" onChange={handleActivity}>
         <option value="All">Todos los países</option>
         <option>Filtrar por actividad</option>
         {activities?.map((activity, index) => (
@@ -63,6 +68,7 @@ export const Filter = () => {
           </option>
         ))}
       </select>
+     </div>
     </div>
   );
 };

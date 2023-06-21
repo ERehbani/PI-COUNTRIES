@@ -43,7 +43,7 @@ const Paginado = () => {
           onClick={() => prevHandler(currentPage)}
           className={styles.button}
         >
-          PREV
+          PREV.
         </button>
         <p className={styles.pagina}>
           {currentPage}/{Math.floor(totCountries / countriesPerPage) + 1}
@@ -52,7 +52,7 @@ const Paginado = () => {
           onClick={() => nextHandler(currentPage)}
           className={styles.button}
         >
-          NEXT
+          SIG.
         </button>
       </div>
     </div>

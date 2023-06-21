@@ -40,32 +40,36 @@ const Detail = () => {
       {detail.length ? (
         <div className={styles.detailContainer}>
           <NavLink to="/home">Home</NavLink>
-          <h1>DETAIL</h1>
 
-          <h1>{estrella()}</h1>
+          <h1 className={styles.detailTitle}>{estrella()}</h1>
           <img src={muchachos()} alt={detail[0].name} className={styles.flag} />
-          <h2>
-            Continente: {detail[0].continent} -{" "}
+          <h2 className={styles.detailInfo}>Continente: </h2>
+          <p className={styles.detailInfo2}>{detail[0].continent} -{" "}
             {detail[0].subregion ? detail[0].subregion : "Subregion indefinida"}
-          </h2>
-          <h2>Capital: {detail[0].capital}</h2>
-          <h2>Area: {detail[0].area.toLocaleString()} km²</h2>
-          <h2>Poblation: {detail[0].poblation.toLocaleString()}</h2>
+            </p>
+          <h2 className={styles.detailInfo}>Capital: </h2>
+          <p className={styles.detailInfo2}>{detail[0].capital}</p>
+          <h2 className={styles.detailInfo}>Area: </h2>
+          <p className={styles.detailInfo2}>{detail[0].area.toLocaleString()} km²</p>
+          <h2 className={styles.detailInfo}>Poblation: </h2>
+          <p className={styles.detailInfo2}>{detail[0].poblation.toLocaleString()}</p>
 
           {detail[0].Activities[0] ? (
-            <h2>
+            <p className={styles.detailInfo}>
               Activity: {detail[0].Activities[0].name}, Season:{" "}
               {detail[0].Activities[0].season}, Difficulty:{" "}
               {detail[0].Activities[0].difficulty}, Duration:{" "}
               {detail[0].Activities[0].duration}
-            </h2>
+            </p>
           ) : (
-            <h2>Este país no cuenta con una actividad</h2>
+            <h2 className={styles.noActivity}>Este país no cuenta con una actividad</h2>
           )}
         </div>
       ) : (
         <Loader />
       )}
+
+      
     </div>
   );
 };

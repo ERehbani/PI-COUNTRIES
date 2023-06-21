@@ -1,18 +1,24 @@
-import "./navbar.css";
+import styles from "./navbar.css";
+
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div class="navbar">
-      <NavLink to="/" class="navlink">
+      <div>
+        <img class="navbarLogo" src="NavbarLogo.svg" alt="" />
+      </div>
+      <div className="links">
+      <NavLink to="/" className="navlink">
         Landing
       </NavLink>
-      <NavLink to="/home" class="navlink">
+      <NavLink to="/home" className="navlink">
         Home
       </NavLink>
-      <NavLink to="/create" class="navlink">
-        Create activity
+      <NavLink to="/create" className="navlink">
+        <button className="buttonToForm">Crear una actividad</button>
       </NavLink>
+      </div>
     </div>
   );
 };

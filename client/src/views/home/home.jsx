@@ -8,6 +8,7 @@ import Searchbar from "../Searchbar/searchbar";
 import Paginado from "../Paginado/paginado";
 import Filter from "../Filters/filters";
 import Order from "../Order/order";
+import './home.css'
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -32,11 +33,15 @@ const Home = () => {
 
   return (
     <div>
-      <h1>HOME</h1>
+      <h1 className="homeTitle">HOME</h1>
+      <div className="homeContainer">
       <Searchbar handleChange={handleChange} handleSubmit={handleSubmit} />
-      <Filter /> <Order />
+      <Filter /> 
+      <Order />
+      </div>
       <CardList allCountries={allCountries} />
       <Paginado />
+  
     </div>
   );
 };
