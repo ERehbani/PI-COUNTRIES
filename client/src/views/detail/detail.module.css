@@ -1,37 +1,115 @@
 .detailContainer img {
     width: 400px;
     border-radius: 8px;
+    margin-top: 20px;
 }
 
 .detailContainer {
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 400px;
+    height: 1369px;
+    margin: 0 auto;
+    /* border: 1px solid black; */
 }
 
 .detailTitle {
     height: 72px;
+    width: 700px;
     font-style: normal;
     font-weight: 700;
     font-size: 48px;
-    line-height: 72px;
-    text-align: center;
+    line-height: 56px;
+    /* text-align: center; */
+    /* border: 1px solid black; */
+    text-align: start;
+
+    
 }
 
 .detailInfo {
     margin-right: 270px;
-    font-weight: bolder;
+    font-weight: 900;
+    display: flex;
+    margin-bottom: -16px;
+    /* border: 1px solid black; */
 }
 
 .detailInfo2 {
     font-size: 20px;
+    display: flex;
+    /* margin: 1px 0 50px 50px; */
 }
 
 .noActivity {
+    display: flex;
     width: 417px;
     height: 87px;
-    background: #EEEEEE;
+    background: #EAEAEA;
     border-radius: 8px;
-    margin: 0 40%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 20px;
 }
 
+.activityInfo {
+    display: flex;
+    margin: 0 auto 50px auto;
+    width: 400px;
+    height: 280px;
+    /* border: 2px solid #0f4d2d; */
+    border-radius: 8px;
+    background-color: #EAEAEA;
+}
+
+.activityName {
+    display: inline;
+}
+
+.activityText {
+    display: inline;
+    font-size: 20px;
+}
+
+.activityContainer {
+    justify-content: center;
+    padding: 40px;
+}
+
+.activityNameContainer {
+    margin: 5px 0 -16px 0;
+}
+
+.activitySeasonContainer {
+    margin: 5px 0 -16px ;
+    width: fit-content;
+}
+
+.activityDifficultyContainer {
+    margin: 5px 0 -16px 0;
+    width: fit-content;
+}
+
+.activityDurationContainer {
+    margin: 5px 0 -16px 0; 
+    width: fit-content;
+}
+
+.buttonToHome {
+    margin: 45px 10px 0 -533px;
+    display: flex;
+    text-align: center;
+    justify-content: start;
+    width: 102px;
+    height: 59px;
+    text-decoration: none;
+    padding: 20px 20px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    background: #000;
+}
+
+.navlink {
+    text-decoration: none;
+}

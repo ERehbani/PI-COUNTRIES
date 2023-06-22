@@ -1,0 +1,154 @@
+.input-name {
+    width: 457px;
+    height: 60px;
+    border-radius: 8px;
+    border: 1px solid #000;
+    background: #FFF;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.input-duration {
+    width: 457px;
+    height: 60px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid #000;
+    background: #FFF;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    flex-shrink: 0;
+}
+
+.input-season {
+    width: 457px;
+    height: 60px;
+    text-align: center;
+    border-radius: 8px;
+    background: #FFF;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+    flex-shrink: 0;
+}
+
+.input-country {
+    width: 457px;
+    height: 60px;
+    width: 457px;
+    height: 60px;
+    text-align: center;
+    border-radius: 8px;
+    background: #FFF;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25)
+}
+
+.country-container {
+    width: 457px;
+    height: 147px;
+    border-radius: 8px;
+    background: #EAEAEA;
+    justify-content: center;
+    margin: auto;
+}
+
+.x-button {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
+.input-difficulty {
+    width: 457px;
+    height: 60px;
+    width: 457px;
+    text-align: center;
+    border-radius: 8px;
+    background: #FFF;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25)
+}
+
+.form-title {
+    font-size: 20px;
+    text-align: start;
+}
+
+.form-container {
+    width: 462px;
+    height: 1200px;
+    /* display: flex; */
+    /* justify-content: center; */
+    margin: 0 auto;
+    /* border: 1px solid black; */
+}
+
+.error-container {
+    display: flex;
+    justify-content: center;
+}
+
+.error-text {
+    color: white;
+    height: 30px;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    border: 2px solid #e54c38;
+    border-radius: 8px;
+    background-color: #f8858b;
+}
+
+.button-container {
+    /* border: 1px solid black; */
+}
+
+.button-form {
+    color: white;
+    border: none;
+    font-size: 18px;
+    margin-top: 30px;
+    margin-bottom: 60px;
+    width: 100%;
+    height: 60px;
+    border-radius: 8px;
+    background-color: #4B5563;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.button-form:hover {
+    background-color: #6b7280;
+    cursor: pointer;
+}
+
+.img-button {
+    width: 18.217px;
+    height: 17.751px;
+}
+
+.create-title {
+    color: #000;
+    font-size: 44px;
+    font-weight: 900;
+}
+
+.buttonToHome {
+    margin: 20px 0 10px 219px;
+    display: flex;
+    text-align: center;
+    justify-content: start;
+    width: 102px;
+    height: 59px;
+    text-decoration: none;
+    padding: 20px 20px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    background: #000;
+}
+
+.buttonToHome:hover {
+    background-color: #4b5563;
+        cursor: pointer;
+}
+
+option {
+    font-size: 18px;
+}

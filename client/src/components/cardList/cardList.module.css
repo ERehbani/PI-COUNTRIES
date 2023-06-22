@@ -1,6 +1,7 @@
 .cardList {
     width: 50vw;
-    margin: 0 auto;
+    margin: auto;
+    justify-content: center;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     

@@ -22,6 +22,7 @@ const CardList = () => {
             subregion={country.subregion ? country.subregion : "error"}
             area={country.area ? country.area : "error"}
             poblation={country.poblation ? country.poblation : "error"}
+            activities={country.Activities ? country.Activities : "error"}
           />
         );
       })}

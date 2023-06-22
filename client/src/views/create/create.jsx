@@ -2,13 +2,16 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getActivity, postActivity } from "../../redux/actions";
 import validate from "./validate";
-import './create.css'
+import "./create.css";
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 const Create = () => {
   const dispatch = useDispatch();
   const countries = useSelector((state) => state.countries);
   const [countrySelected, setCountrySelected] = useState(false);
   const [seasonSelected, setSeasonSelected] = useState(false);
+  const [difficulty, setDifficulty] = useState(false);
+  const [maxSelectedCountries, setMaxSelectedCountries] = useState(5);
   const [input, setInput] = useState({
     name: "",
     difficulty: "",
@@ -51,6 +54,27 @@ const Create = () => {
     );
   };
 
+  const handleDifficulty = (event) => {
+    event.preventDefault();
+    const difficultyValue = event.target.value;
+    if (difficultyValue !== "") {
+      setDifficulty(true);
+    } else {
+      setDifficulty(false);
+    }
+
+    setInput({
+      ...input,
+      [event.target.name]: event.target.value,
+    });
+    setError(
+      validate({
+        ...input,
+        [event.target.name]: event.target.value,
+      })
+    );
+  };
+
   const handleSelectChange = (event) => {
     event.preventDefault();
     const selectedCountryId = event.target.value;
@@ -65,16 +89,19 @@ const Create = () => {
       return alert("Este país ya ha sido seleccionado");
     }
 
-    setInput((input) => ({
+    if (input.countryId.length >= maxSelectedCountries) {
+      return alert(
+        `Se alcanzó el límite máximo de ${maxSelectedCountries} países seleccionados.`
+      );
+    }
+
+    const updatedInput = {
       ...input,
       countryId: [...input.countryId, selectedCountryId],
-    }));
-    setError(
-      validate({
-        ...input,
-        countryId: selectedCountryId,
-      })
-    );
+    };
+
+    setInput(updatedInput);
+    setError(validate(updatedInput));
   };
 
   const handleDelete = (countrySelected) => {
@@ -107,6 +134,13 @@ const Create = () => {
     ) {
       return alert("Verificar que se cumplan todas las validaciones");
     }
+
+    if (input.countryId.length > maxSelectedCountries) {
+      return alert(
+        `Se superó el límite máximo de ${maxSelectedCountries} países seleccionados.`
+      );
+    }
+
     dispatch(postActivity(input));
     alert("Actividad completada correctamente!");
     setInput({
@@ -117,16 +151,21 @@ const Create = () => {
       countryId: [],
     });
   };
-
+  console.log(input.countryId);
   return (
     <div>
+      <NavLink to="/home" className="navlink">
+        <button className="buttonToHome"> ← Home</button>
+      </NavLink>
       <form className="form-container" onSubmit={handleOnSubmit}>
-        <h1>Crear una actividad turística</h1>
+        <h1 className="create-title">Crear una actividad</h1>
 
         <div className="form-row">
           <div className="form-column">
             <div className="form-group">
-              <label htmlFor="name">Nombre:</label>
+              <label htmlFor="name">
+                <h1 className="form-title">Nombre: </h1>
+              </label>
               <input
                 onChange={handleChange}
                 value={input.name}
@@ -134,27 +173,72 @@ const Create = () => {
                 placeholder="Ingresa el nombre"
                 name="name"
                 autoComplete="off"
+                className="input-name"
               />
-              {error.name ? <p>{error.name}</p> : ""}
+
+              {error.name ? (
+                <div className="error-container">
+                  {" "}
+                  <p className="error-text">{error.name}</p>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
 
             <div className="form-group">
-              <label htmlFor="difficulty">Dificultad:</label>
-              <input
+              <label htmlFor="difficulty">
+                <h1 className="form-title">Dificultad: </h1>
+              </label>
+              {/* <input
                 onChange={handleChange}
                 value={input.difficulty}
                 type="text"
                 placeholder="Ingresa la dificultad (1 a 5)"
                 name="difficulty"
                 autoComplete="off"
-              />
-              {error.difficulty ? <p>{error.difficulty}</p> : ""}
+              /> */}
+              <select
+                name="difficulty"
+                id=""
+                onChange={handleDifficulty}
+                className="input-difficulty"
+              >
+                <option disabled={difficulty} value="">
+                  Seleccione una dificultad
+                </option>
+                <option name="difficulty" value="1">
+                  Muy fácil (⚫〇〇〇〇)
+                </option>
+                <option name="difficulty" value="2">
+                  Fácil (⚫⚫〇〇〇)
+                </option>
+                <option name="difficulty" value="3">
+                  Medio (⚫⚫⚫〇〇)
+                </option>
+                <option name="difficulty" value="4">
+                  Difícil (⚫⚫⚫⚫〇)
+                </option>
+                <option name="difficulty" value="5">
+                  Muy difícil (⚫⚫⚫⚫⚫)
+                </option>
+              </select>
+
+              {error.difficulty ? (
+                <div className="error-container">
+                  <p className="error-text">{error.difficulty}</p>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
 
           <div className="form-column">
             <div className="form-group">
-              <label htmlFor="duration">Duración:</label>
+              <label htmlFor="duration">
+                <h1 className="form-title">Duración: </h1>
+              </label>
               <input
                 onChange={handleChange}
                 value={input.duration}
@@ -162,29 +246,56 @@ const Create = () => {
                 placeholder="Ingresa la duración HH:MM:SS"
                 name="duration"
                 autoComplete="off"
+                className="input-duration"
               />
-              {error.duration ? <p>{error.duration}</p> : ""}
+
+              {error.duration ? (
+                <div className="error-container">
+                  <p className="error-text">{error.duration}</p>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
 
             <div className="form-group">
-              <label htmlFor="season">Temporada:</label>
-              <select name="season" onChange={handleChange}>
+              <label htmlFor="season">
+                <h1 className="form-title">Temporada: </h1>
+              </label>
+              <select
+                name="season"
+                onChange={handleChange}
+                className="input-season"
+              >
                 <option disabled={seasonSelected}>
                   Selecciona la temporada
                 </option>
-                <option value="Summer">Verano</option>
-                <option value="Autumn">Otoño</option>
-                <option value="Winter">Invierno</option>
-                <option value="Spring">Primavera</option>
+                <option value="Summer">Verano ☀️</option>
+                <option value="Autumn">Otoño 🍂</option>
+                <option value="Winter">Invierno ⛄</option>
+                <option value="Spring">Primavera 🌷</option>
               </select>
-              {error.season ? <p>{error.season}</p> : ""}
+
+              {error.season ? (
+                <div className="error-container">
+                  <p className="error-text">{error.season}</p>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
 
         <div className="form-group">
-          <label htmlFor="countryId">País:</label>
-          <select name="countryId" onChange={handleSelectChange}>
+          <label htmlFor="countryId">
+            <h1 className="form-title">País: </h1>
+          </label>
+          <select
+            name="countryId"
+            onChange={handleSelectChange}
+            className="input-country"
+          >
             <option disabled={countrySelected}>Selecciona el/los países</option>
             {countries &&
               countries.map((country) => (
@@ -192,29 +303,46 @@ const Create = () => {
                   {country.name}
                 </option>
               ))}
-            {error.countryId ? <p>{error.countryId}</p> : ""}
+
+            {error.countryId ? (
+              <div className="error-container">
+                <p className="error-text">{error.countryId}</p>
+              </div>
+            ) : (
+              ""
+            )}
           </select>
         </div>
 
         <div className="selected-countries-container">
-          <h3>Lista de países seleccionados:</h3>
-          {input.countryId.map((countrySelected) => (
-            <div key={countrySelected} className="country-container">
-              <span>{countrySelected}</span>
-              <input
-                type="button"
-                value="x"
-                onClick={() => handleDelete(countrySelected)}
-              />
-            </div>
-          ))}
+          <h1 className="form-title">Lista de países seleccionados: </h1>
+          <div className="country-container">
+            {input.countryId.map((countrySelected) => (
+              <div key={countrySelected}>
+                <img
+                  src="xbutton.svg"
+                  alt=""
+                  onClick={() => handleDelete(countrySelected)}
+                  className="x-button"
+                />
+                <span className="countrySelected">{countrySelected}</span>
+                {/* <input
+                  type="button"
+                  value="x"
+                  onClick={() => handleDelete(countrySelected)}
+                  className="x-button"
+                /> */}
+              </div>
+            ))}
+          </div>
         </div>
 
-        <button className="button" type="submit">
-          Enviar
-        </button>
+        <div className="button-container">
+          <button className="button-form" type="submit">
+            Enviar <img className="img-button" src="vector.svg" alt="" />
+          </button>
+        </div>
       </form>
-      
     </div>
   );
 };
