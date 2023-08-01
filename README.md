@@ -6,7 +6,7 @@
 
 ## Objetivos del Proyecto.
 
-Crear una Aplicación web donde se puedan encontrar diferentes tipos de países de cocina 🥗, utilizando una API externa. Y a partir de ella, poder entre otras cosas:
+Crear una Aplicación web donde se puedan encontrar diferentes tipos de países 🌍. utilizando una API externa. Y a partir de ella, poder entre otras cosas:
 
   ✅ Buscar países
 
