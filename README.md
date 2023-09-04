@@ -20,7 +20,7 @@ Crear una Aplicación web donde se puedan encontrar diferentes tipos de países 
 
  # Requisitos para ejecutarla localmente ⚙
   1. Instalar PostgreSQL
-  2. Crear una base de datos con el nombre "recipes"
+  2. Crear una base de datos con el nombre "countries"
   3. Dentro de ./api cree un archivo .env con sus credenciales, como se muestra a continuacion...
 
 
